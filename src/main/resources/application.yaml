@@ -5,36 +5,20 @@ spring:
     name: "back-agrocredito-core"
   banner:
     charset: utf-8
-    location: banner.txt
+    location: "banner.txt"
   datasource:
     driver-class-name: "com.mysql.cj.jdbc.Driver"
-    username: agrocredito-root
-    password: $kf7hZ97jZiq&z&xdJqcB!
-    url: "jdbc:mysql://agrocredito-serverbd.database.windows.net:3306/agrocredito"
+    username: "root"
+    password: "123456"
+    url: "jdbc:mysql://localhost:3306/agrocredito"
   security:
     user:
       name: user
       password: password
-    oauth2:
-      authorizationserver:
-        client:
-          oidc-client:
-            registration:
-              client-id: "oidc-client"
-              client-secret: "{noop}secret"
-              client-authentication-methods:
-                - "client_secret_basic"
-              authorization-grant-types:
-                - "authorization_code"
-                - "refresh_token"
-              redirect-uris:
-                - "http://127.0.0.1:8080/login/oauth2/code/oidc-client"
-              post-logout-redirect-uris:
-                - "http://127.0.0.1:8080/"
-              scopes:
-                - "openid"
-                - "profile"
-            require-authorization-consent: true
 
-
-
+security:
+  jwt:
+    secret-key: "McvbIKwPaVjhmKBwFUdHDXzvfWeAZgaJ8XJr6cBsvNkPI9VUvAWw7GzFMV6ZhHsI"
+    expiration: 86400000
+    refresh-token:
+      expiration: 604800000
