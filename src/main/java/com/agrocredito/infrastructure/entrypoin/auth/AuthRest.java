@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("protected/auth/")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class AuthRest {
 
     private final AuthService service;
