@@ -31,6 +31,10 @@ public class AuthService {
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .telefono(request.getTelefono())
+                .ciudad(request.getCiudad())
+                .direccion(request.getDireccion())
+                .rol(request.getRol() != null ? request.getRol() : "Cliente")
                 .build();
 
         final UserEntity savedUser = repository.save(user);

@@ -28,6 +28,18 @@ public final class UserEntity {
     @Column(nullable = false)
     private String password;
 
+    @Column(length = 20)
+    private String telefono;
+
+    @Column(length = 30)
+    private String rol;
+
+    @Column(length = 1000)
+    private String ciudad;
+
+    @Column(length = 100)
+    private String direccion;
+
     @OneToMany(mappedBy = "user")
     private List<TokenEntity> tokenEntities;
 }
