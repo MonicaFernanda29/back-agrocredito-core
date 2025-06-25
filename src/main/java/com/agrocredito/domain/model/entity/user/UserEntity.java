@@ -1,6 +1,5 @@
 package com.agrocredito.domain.model.entity.user;
 
-
 import com.agrocredito.domain.model.entity.auth.TokenEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +7,7 @@ import lombok.*;
 import java.util.List;
 
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -25,7 +24,6 @@ public final class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
     @Column(length = 20)
@@ -40,6 +38,8 @@ public final class UserEntity {
     @Column(length = 100)
     private String direccion;
 
-    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TokenEntity> tokenEntities;
 }
